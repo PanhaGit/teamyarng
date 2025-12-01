@@ -7,7 +7,17 @@ module.exports = withMT({
     "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        blackLight: "#222222",
+        secondary: "#14171A",
+        accent: "#657786",
+      },
+      fontFamily: {
+        en: ["Roboto", "sans-serif"],
+        kh: ["Battambang", "serif"],
+      },
+    },
   },
   plugins: [],
 });

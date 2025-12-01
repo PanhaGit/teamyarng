@@ -1,3 +1,19 @@
+/* Load fonts BEFORE Tailwind */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default English */
+html,
+body {
+  font-family: "Roboto", sans-serif !important;
+}
+
+/* Apply Khmer font to all children */
+.kh-font,
+.kh-font * {
+  font-family: "Battambang", sans-serif !important;
+}
