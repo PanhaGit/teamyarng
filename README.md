@@ -99,3 +99,39 @@ We help businesses set up secure and stable servers:
 To deliver simple, powerful, and scalable digital solutions that help businesses and schools modernize their workflows and grow through technology.
 
 ---
+
+## 🚀 Run Project
+
+---
+
+### 🐳 Docker (Production Build)
+
+Build the Docker image:
+
+```bash
+docker build -t teamyearng-frontend .
+```
+
+Run the Docker container:
+
+```bash
+docker run -d -p 80:80 teamyearng-frontend
+```
+
+The application will be available at `http://localhost:8080`.
+
+### 🛠️ Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`.
