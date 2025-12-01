@@ -1,4 +1,8 @@
-# TeamYearng
+<p align="center">
+  <img src="src/assets/logo.svg" alt="TeamYearng Logo" width="150" />
+</p>
+
+<h1 align="center">TeamYearng</h1>
 
 TeamYearng is a development team specializing in building modern, scalable, and reliable digital solutions for businesses, schools, organizations, and individuals.  
 We focus on delivering high-quality systems, applications, and IT services with a strong emphasis on performance, usability, and long-term support.
@@ -9,8 +13,8 @@ We focus on delivering high-quality systems, applications, and IT services with 
 
 - **THO Panha** – Full-stack Developer / Mobile Developer
 - **BY Vibol** – Backend Developer / System Analyst
-- **ROTH Angkeamanet** – UI/UX Designer / Frontend Developer
-- **Pim Panharith** – Flutter Developer / Project Support
+- **ROTH Angkeamanet** – UI/UX Designer / Full-stack Developer
+- **Pim Panharith** – Flutter Developer / Project Support / Full-stack Developer
 
 ---
 
@@ -82,7 +86,7 @@ We help businesses set up secure and stable servers:
 
 ## ⚙️ Technologies Used
 
-- **Frontend:** React, Vue, Vite, TailwindCSS, Bootstrap
+- **Frontend:** React, Vue, Vite, TailwindCSS, Bootstrap, Next.js, Nuxt.js
 - **Backend:** Node.js, Express, Laravel, PHP
 - **Mobile:** Flutter
 - **Database:** MySQL, PostgreSQL
@@ -95,9 +99,3 @@ We help businesses set up secure and stable servers:
 To deliver simple, powerful, and scalable digital solutions that help businesses and schools modernize their workflows and grow through technology.
 
 ---
-
-If you want, I can:
-✅ Add your team logo  
-✅ Create an even more professional README layout  
-✅ Generate a website landing page version  
-Just tell me!
