@@ -4,11 +4,14 @@ import { ThemeProvider } from "@material-tailwind/react";
 import "./index.css";
 import App from "./App.jsx";
 import "./i18n";
+import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </HelmetProvider>
   </StrictMode>
 );
