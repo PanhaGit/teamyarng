@@ -14,7 +14,13 @@ const HomePage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Pin the hero section (increased duration for more scroll time)
+      // Set initial state - card visible from the start
+      gsap.set(cardRef.current, { x: "0%", opacity: 1, rotationY: 0 });
+      gsap.set(titleRef.current, { y: 0, opacity: 1 });
+      gsap.set(subtitleRef.current, { y: 0, opacity: 1 });
+      gsap.set(ctaRef.current, { y: 0, opacity: 1, scale: 1 });
+
+      // Pin the hero section
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",
@@ -36,69 +42,23 @@ const HomePage = () => {
         },
       });
 
-      // Card animation: slide in from left
-      const cardTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=800",
-          scrub: 1,
-        },
-      });
-
-      cardTimeline.fromTo(
-        cardRef.current,
-        { x: "-100%", opacity: 0, rotationY: -15 },
-        { x: "0%", opacity: 1, rotationY: 0, ease: "power2.out" }
-      );
-
-      // Staggered text animations
-      const textTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=1000",
-          scrub: 1,
-        },
-      });
-
-      textTimeline
-        .fromTo(
-          titleRef.current,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.3 }
-        )
-        .fromTo(
-          subtitleRef.current,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.3 },
-          "-=0.1"
-        )
-        .fromTo(
-          ctaRef.current,
-          { y: 20, opacity: 0, scale: 0.9 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.3 },
-          "-=0.1"
-        );
-
-      // Floating animation
+      // Floating animation (starts immediately)
       gsap.to(cardRef.current, {
         y: -15,
         duration: 2.5,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-        delay: 1,
       });
 
-      // Fade out card
+      // Fade out card as user scrolls past
       gsap.to(cardRef.current, {
         opacity: 0,
         y: -100,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "+=1800",
-          end: "+=700",
+          start: "+=2700",
+          end: "+=300",
           scrub: 1,
         },
       });
@@ -127,10 +87,117 @@ const HomePage = () => {
             style={{ animationDelay: "2s" }}
           />
 
-          {/* Floating particles */}
-          {[...Array(20)].map((_, i) => (
+          {/* Floating text words about the team */}
+          {[
+            {
+              word: "Innovation",
+              size: "text-4xl",
+              pos: { top: "15%", left: "10%" },
+            },
+            {
+              word: "Creative",
+              size: "text-3xl",
+              pos: { top: "25%", right: "15%" },
+            },
+            {
+              word: "Excellence",
+              size: "text-5xl",
+              pos: { top: "40%", left: "5%" },
+            },
+            {
+              word: "Collaborative",
+              size: "text-3xl",
+              pos: { top: "60%", right: "10%" },
+            },
+            {
+              word: "Agile",
+              size: "text-2xl",
+              pos: { bottom: "30%", left: "12%" },
+            },
+            {
+              word: "Expert",
+              size: "text-4xl",
+              pos: { bottom: "20%", right: "20%" },
+            },
+            {
+              word: "Passionate",
+              size: "text-3xl",
+              pos: { top: "70%", left: "20%" },
+            },
+            {
+              word: "Innovative",
+              size: "text-2xl",
+              pos: { top: "35%", right: "25%" },
+            },
+          ].map((item, i) => (
             <div
-              key={i}
+              key={`word-${i}`}
+              className={`absolute ${item.size} font-bold text-white/10 animate-float-slow pointer-events-none select-none`}
+              style={{
+                ...item.pos,
+                animationDelay: `${i * 0.5}s`,
+                animationDuration: `${8 + Math.random() * 4}s`,
+              }}
+            >
+              {item.word}
+            </div>
+          ))}
+
+          {/* Floating code symbols */}
+          {["{ }", "< />", "[ ]", "( )", "=>", "&&", "||", "==="].map(
+            (symbol, i) => (
+              <div
+                key={`symbol-${i}`}
+                className="absolute text-2xl font-mono text-cyan-400/20 animate-float-slow pointer-events-none select-none"
+                style={{
+                  left: `${10 + i * 11}%`,
+                  top: `${20 + i * 8}%`,
+                  animationDelay: `${i * 0.7}s`,
+                  animationDuration: `${10 + Math.random() * 5}s`,
+                }}
+              >
+                {symbol}
+              </div>
+            )
+          )}
+
+          {/* Tech icons/symbols */}
+          {["⚡", "🚀", "💡", "🔧", "⚙️", "🎯"].map((icon, i) => (
+            <div
+              key={`icon-${i}`}
+              className="absolute text-4xl animate-float-slow pointer-events-none select-none opacity-20"
+              style={{
+                left: `${15 + i * 15}%`,
+                bottom: `${10 + i * 10}%`,
+                animationDelay: `${i * 1.2}s`,
+                animationDuration: `${12 + Math.random() * 6}s`,
+              }}
+            >
+              {icon}
+            </div>
+          ))}
+
+          {/* Animated connecting lines */}
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={`line-${i}`}
+              className="absolute bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent animate-pulse"
+              style={{
+                width: `${200 + Math.random() * 300}px`,
+                height: "2px",
+                left: `${Math.random() * 80}%`,
+                top: `${Math.random() * 100}%`,
+                transform: `rotate(${Math.random() * 360}deg)`,
+                animationDelay: `${i * 0.8}s`,
+                animationDuration: `${3 + Math.random() * 2}s`,
+              }}
+            />
+          ))}
+
+          {/* Floating particles */}
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={`particle-${i}`}
               className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
               style={{
                 left: `${Math.random() * 100}%`,
@@ -139,6 +206,22 @@ const HomePage = () => {
                 animationDuration: `${5 + Math.random() * 10}s`,
               }}
             />
+          ))}
+
+          {/* Binary numbers floating */}
+          {["01", "10", "11", "00", "101", "010"].map((binary, i) => (
+            <div
+              key={`binary-${i}`}
+              className="absolute text-xl font-mono text-blue-400/15 animate-float-slow pointer-events-none select-none"
+              style={{
+                right: `${5 + i * 10}%`,
+                top: `${15 + i * 12}%`,
+                animationDelay: `${i * 1.5}s`,
+                animationDuration: `${15 + Math.random() * 5}s`,
+              }}
+            >
+              {binary}
+            </div>
           ))}
         </div>
 
@@ -164,12 +247,32 @@ const HomePage = () => {
               transform: translateY(-20px) translateX(5px);
             }
           }
+          @keyframes float-slow {
+            0%,
+            100% {
+              transform: translateY(0px) translateX(0px);
+              opacity: 0.1;
+            }
+            25% {
+              transform: translateY(-30px) translateX(15px);
+              opacity: 0.15;
+            }
+            50% {
+              transform: translateY(-60px) translateX(-20px);
+              opacity: 0.08;
+            }
+            75% {
+              transform: translateY(-30px) translateX(10px);
+              opacity: 0.12;
+            }
+          }
           .animate-float {
             animation: float linear infinite;
           }
+          .animate-float-slow {
+            animation: float-slow ease-in-out infinite;
+          }
         `}</style>
-
-        {/* help add more content in bg */}
 
         {/* Animated Content Card */}
         <div
@@ -576,14 +679,14 @@ const ContactSection = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-slate-900 to-gray-900 py-20 lg:py-32 flex items-center">
       <div ref={sectionRef} className="max-w-4xl mx-auto px-8 text-center">
-        <h2 className="text-5xl lg:text-7xl font-bold text-white mb-8">
+        <h2 className="text-5xl lg:text-7xl font-bold text-black mb-8">
           Ready to Start Your
           <br />
           <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             Next Project?
           </span>
         </h2>
-        <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+        <p className="text-xl text-black mb-12 max-w-2xl mx-auto">
           Let's discuss how we can help transform your ideas into reality
         </p>
         <button className="px-12 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-lg rounded-xl font-semibold shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-300">
