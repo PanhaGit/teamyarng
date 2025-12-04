@@ -18,8 +18,8 @@ const Navbars = () => {
 
   const navLinks = [
     { name: t("home"), path: "/" },
-    { name: t("about"), path: "/about" },
-    { name: t("contact"), path: "/contact" },
+    // { name: t("about"), path: "/about" },
+    // { name: t("contact"), path: "/contact" },
   ];
 
   const activeClass = "text-blue-600 border-b-2 border-blue-600 font-semibold";
@@ -57,7 +57,7 @@ const Navbars = () => {
               {link.name}
             </NavLink>
           ))}
-          <LanguageSelectorMUI />
+          {/* <LanguageSelectorMUI /> */}
         </div>
 
         {/* Mobile Hamburger */}
