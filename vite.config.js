@@ -5,23 +5,22 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
 
-  // Include Lottie files as assets
+  // Allow importing .lottie files
   assetsInclude: ["**/*.lottie"],
 
-  // SPA routing support for Vercel
+  // Base path for SPA routing
   base: "/",
 
-  // Path alias for cleaner imports
+  // Aliases for cleaner imports
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
   },
 
-  // Build configuration
   build: {
-    outDir: "dist",
-    emptyOutDir: true,
+    outDir: "dist",       // Output folder for Vercel
+    emptyOutDir: true,    // Clear dist before build
     sourcemap: false,
   },
 });
