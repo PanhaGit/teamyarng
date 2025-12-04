@@ -7,9 +7,9 @@ export const config = {
 export default function handler(req) {
   try {
     const { searchParams } = new URL(req.url);
-    const title = searchParams.get("title") || "TeamYearng";
+    const title = searchParams.get("title ") || "TeamYearng";
     const description =
-      searchParams.get("description") ||
+      searchParams.get("descriptions") ||
       "Professional System & App Development";
 
     return new ImageResponse(
