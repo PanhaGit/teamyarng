@@ -25,17 +25,17 @@ const MasterLayout = () => {
 
   return (
     <TemplateLoading>
-      <div className="flex flex-col min-h-screen bg-gray-50">
-        {/* Navbar */}
+      <div className="flex flex-col min-h-screen">
+        {/* Navbar with iOS glassmorphism */}
         <Navbars />
 
-        {/* Main content */}
+        {/* Main content - no padding top needed, navbar is fixed */}
         <main className="flex-1">
           <Outlet />
         </main>
 
-        {/* Footer */}
-        {/* <footer className="bg-blue-600 text-white text-center py-6 mt-auto">
+        {/* Footer (optional) */}
+        {/* <footer className="bg-slate-900 text-white text-center py-6 mt-auto">
           &copy; {new Date().getFullYear()} TeamYearng. All rights reserved.
         </footer> */}
       </div>
