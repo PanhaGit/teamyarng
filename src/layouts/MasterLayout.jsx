@@ -30,14 +30,14 @@ const MasterLayout = () => {
         <Navbars />
 
         {/* Main content */}
-        <main className="flex-1 mt-16 md:mt-20 px-4 md:px-8 py-6">
+        <main className="flex-1">
           <Outlet />
         </main>
 
         {/* Footer */}
-        <footer className="bg-blue-600 text-white text-center py-6 mt-auto">
+        {/* <footer className="bg-blue-600 text-white text-center py-6 mt-auto">
           &copy; {new Date().getFullYear()} TeamYearng. All rights reserved.
-        </footer>
+        </footer> */}
       </div>
     </TemplateLoading>
   );
